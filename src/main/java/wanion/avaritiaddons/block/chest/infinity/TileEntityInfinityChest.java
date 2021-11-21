@@ -39,7 +39,7 @@ public final class TileEntityInfinityChest extends TileEntityAvaritiaddonsChest
 			return;
 		if (slot < 243) {
 			final ItemStack slotStack = inventoryAvaritiaddonsChest.contents[slot];
-			if (slotStack != null && slotStack.getItem() == itemStack.getItem() && (!itemStack.getHasSubtypes() || itemStack.getItemDamage() == slotStack.getItemDamage()) && ItemStack.areItemStackTagsEqual(itemStack, slotStack)) {
+			if (isSameItem(slotStack, itemStack)) {
 				int tmp = itemStack.stackSize;
 				itemStack.stackSize = slotStack.stackSize;
 				slotStack.stackSize = tmp;
@@ -66,11 +66,19 @@ public final class TileEntityInfinityChest extends TileEntityAvaritiaddonsChest
 		markDirty();
 	}
 
+	private boolean isSameItem(ItemStack slotStack, ItemStack itemStack) {
+		if (slotStack == null || itemStack == null) return false;
+		boolean itemEqual = slotStack.getItem() == itemStack.getItem();
+		boolean metaEqual = (!itemStack.getHasSubtypes() || itemStack.getItemDamage() == slotStack.getItemDamage());
+		boolean tagEqual = ItemStack.areItemStackTagsEqual(itemStack, slotStack);
+		return itemEqual && metaEqual && tagEqual;
+	}
+
 	private int findSlotFor(@Nonnull final ItemStack itemStack)
 	{
 		for (int i = 0; i < 243; i++) {
 			final ItemStack slotStack = inventoryAvaritiaddonsChest.contents[i];
-			if (slotStack != null && slotStack.getItem() == itemStack.getItem() && (!itemStack.getHasSubtypes() || itemStack.getItemDamage() == slotStack.getItemDamage()) && ItemStack.areItemStackTagsEqual(itemStack, slotStack)) {
+			if (isSameItem(slotStack, itemStack)) {
 				if ((long) slotStack.stackSize + (long) itemStack.stackSize <= (long) Integer.MAX_VALUE)
 					return i;
 			}
@@ -133,13 +141,13 @@ public final class TileEntityInfinityChest extends TileEntityAvaritiaddonsChest
 	@Override
 	public boolean isItemValidForSlot(final int slot, final ItemStack itemStack)
 	{
-		return slot != 243;
+		return slot != 243 || findSlotFor(itemStack) != -1;
 	}
 
 	@Override
 	public final int getSizeInventory()
 	{
-		return 243;
+		return 244;
 	}
 
 	@Override
