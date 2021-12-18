@@ -1,8 +1,8 @@
 // Add your dependencies here
 
 dependencies {
-    compile("com.github.GTNewHorizons:Avaritia:unified-build-script-SNAPSHOT:dev")
-    compile("com.github.GTNewHorizons:WanionLib:unified-build-script-SNAPSHOT:dev")
+    compile("com.github.GTNewHorizons:Avaritia:unified-build-script-SNAPSHOT:dev")  // TODO: change to master
+    compile("com.github.GTNewHorizons:WanionLib:unified-build-script-SNAPSHOT:dev")  // TODO: change to master
 
     compileOnly("com.github.GTNewHorizons:inventory-tweaks:master-SNAPSHOT:dev") {
         transitive = false
