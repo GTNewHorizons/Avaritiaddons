@@ -14,7 +14,7 @@ public final class Reference
 {
 	public static final String MOD_ID = "avaritiaddons";
 	public static final String MOD_NAME = "Avaritiaddons";
-	public static final String MOD_VERSION = "1.4b";
+	public static final String MOD_VERSION = "GRADLETOKEN_VERSION";
 	public static final String DEPENDENCIES = "required-after:Avaritia;required-after:wanionlib@[1.7.10-1.2,)";
 	public static final String CLIENT_PROXY = "wanion.avaritiaddons.client.ClientProxy";
 	public static final String SERVER_PROXY = "wanion.avaritiaddons.CommonProxy";
