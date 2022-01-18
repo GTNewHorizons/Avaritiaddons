@@ -1,10 +1,10 @@
 // Add your dependencies here
 
 dependencies {
-    compile("com.github.GTNewHorizons:Avaritia:master-SNAPSHOT:dev")
-    compile("com.github.GTNewHorizons:WanionLib:master-SNAPSHOT:dev")
+    compile("com.github.GTNewHorizons:Avaritia:1.22:dev")
+    compile("com.github.GTNewHorizons:WanionLib:1.8.2:dev")
 
-    compileOnly("com.github.GTNewHorizons:inventory-tweaks:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:inventory-tweaks:1.5.13:dev") {
         transitive = false
     }
 }
