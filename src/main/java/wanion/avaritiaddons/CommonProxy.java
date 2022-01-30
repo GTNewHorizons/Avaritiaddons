@@ -9,6 +9,7 @@ package wanion.avaritiaddons;
  */
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -77,17 +78,19 @@ public class CommonProxy
 
 	public final void init()
 	{
-		if (Config.hardCompressedChestRecipe)
-			ExtremeCraftingManager.getInstance().addExtremeShapedOreRecipe(new ItemStack(BlockCompressedChest.instance), "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", 'C', Blocks.chest);
-		else
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockCompressedChest.instance), "CCC", "CCC", "CCC", 'C', Blocks.chest));
-		if (craftingOnly)
-			return;
-		if (Config.hardInfinityChestRecipe)
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockInfinityChest.instance), "INI", "BCB", "IBI", 'I', "ingotInfinity", 'N', "blockCosmicNeutronium", 'B', "blockInfinity", 'C', BlockCompressedChest.instance));
-		else
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockInfinityChest.instance), "TNT", "ICI", "TIT", 'T', new ItemStack(LudicrousItems.resource, 1, 5), 'N', "blockCosmicNeutronium", 'I', "ingotInfinity", 'C', BlockCompressedChest.instance));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockExtremeAutoCrafter.instance), " S ", "NCN", " N ", 'S', new ItemStack(LudicrousItems.singularity, 1, 3), 'N', "blockCosmicNeutronium", 'C', new ItemStack(LudicrousBlocks.dire_crafting)));
+		if (!Loader.isModLoaded("dreamcraft")) {
+			if (Config.hardCompressedChestRecipe)
+				ExtremeCraftingManager.getInstance().addExtremeShapedOreRecipe(new ItemStack(BlockCompressedChest.instance), "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", 'C', Blocks.chest);
+			else
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockCompressedChest.instance), "CCC", "CCC", "CCC", 'C', Blocks.chest));
+			if (craftingOnly)
+				return;
+			if (Config.hardInfinityChestRecipe)
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockInfinityChest.instance), "INI", "BCB", "IBI", 'I', "ingotInfinity", 'N', "blockCosmicNeutronium", 'B', "blockInfinity", 'C', BlockCompressedChest.instance));
+			else
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockInfinityChest.instance), "TNT", "ICI", "TIT", 'T', new ItemStack(LudicrousItems.resource, 1, 5), 'N', "blockCosmicNeutronium", 'I', "ingotInfinity", 'C', BlockCompressedChest.instance));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockExtremeAutoCrafter.instance), " S ", "NCN", " N ", 'S', new ItemStack(LudicrousItems.singularity, 1, 3), 'N', "blockCosmicNeutronium", 'C', new ItemStack(LudicrousBlocks.dire_crafting)));
+		}
 	}
 
 	public final void postInit()
