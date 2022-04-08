@@ -12,15 +12,16 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.Item;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import wanion.avaritiaddons.Avaritiaddons;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class BlockAvaritiaddonsChest extends BlockContainer
@@ -55,20 +56,8 @@ public abstract class BlockAvaritiaddonsChest extends BlockContainer
 	@Override
 	public final void breakBlock(final World world, final int x, final int y, final int z, final Block block, final int metadata)
 	{
-		final TileEntityAvaritiaddonsChest tileEntityAvaritiaddonsChest = (TileEntityAvaritiaddonsChest) world.getTileEntity(x, y, z);
-		if (tileEntityAvaritiaddonsChest != null) {
-			final ItemStack droppedStack = new ItemStack(block, 1, 0);
-			droppedStack.setTagCompound(tileEntityAvaritiaddonsChest.writeCustomNBT(new NBTTagCompound()));
-			world.spawnEntityInWorld(new EntityItem(world, x + rand.nextFloat() * 0.8F + 0.1F, y + rand.nextFloat() * 0.8F + 0.1F, z + rand.nextFloat() * 0.8F + 0.1F, droppedStack));
-		}
 		super.breakBlock(world, x, y, z, block, metadata);
 		world.func_147453_f(x, y, z, block);
-	}
-
-	@Override
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
-	{
-		return null;
 	}
 
 	@Override
@@ -82,4 +71,30 @@ public abstract class BlockAvaritiaddonsChest extends BlockContainer
 				tileEntityAvaritiaddonsChest.readCustomNBT(itemStack.stackTagCompound);
 		}
 	}
+
+	@Override
+	public boolean removedByPlayer(World world, EntityPlayer player, int x, int y, int z, boolean willHarvest) {
+		if (willHarvest) {
+			for (ItemStack drop : getDrops(world, x, y, z, 0, 0)) {
+				dropBlockAsItem(world, x, y, z, drop);
+			}
+		}
+		return super.removedByPlayer(world, player, x, y, z, willHarvest);
+	}
+
+	@Override
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+	{
+		TileEntity te = world.getTileEntity(x, y, z);
+		Block block = world.getBlock(x, y, z);
+		ArrayList<ItemStack> arr = new ArrayList<>();
+		if (te instanceof TileEntityAvaritiaddonsChest) {
+			TileEntityAvaritiaddonsChest tileEntityAvaritiaddonsChest = (TileEntityAvaritiaddonsChest) te;
+			final ItemStack droppedStack = new ItemStack(block, 1, 0);
+			droppedStack.setTagCompound(tileEntityAvaritiaddonsChest.writeCustomNBT(new NBTTagCompound()));
+			arr.add(droppedStack);
+		}
+		return arr;
+	}
+
 }
