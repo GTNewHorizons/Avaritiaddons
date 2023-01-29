@@ -1,45 +1,41 @@
 package wanion.avaritiaddons.block.chest.infinity;
 
 /*
- * Created by WanionCane(https://github.com/WanionCane).
- *
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ * Created by WanionCane(https://github.com/WanionCane). This Source Code Form is subject to the terms of the Mozilla
+ * Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at
+ * http://mozilla.org/MPL/2.0/.
  */
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
 import wanion.avaritiaddons.block.chest.RendererAvaritiaddonsChest;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public final class ItemRendererInfinityChest implements IItemRenderer
-{
-	private static final TileEntityInfinityChest tileEntityInfinityChest = new TileEntityInfinityChest();
+public final class ItemRendererInfinityChest implements IItemRenderer {
 
-	@Override
-	public boolean handleRenderType(ItemStack item, ItemRenderType type)
-	{
-		return true;
-	}
+    private static final TileEntityInfinityChest tileEntityInfinityChest = new TileEntityInfinityChest();
 
-	@Override
-	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper)
-	{
-		return true;
-	}
+    @Override
+    public boolean handleRenderType(ItemStack item, ItemRenderType type) {
+        return true;
+    }
 
-	@Override
-	public void renderItem(ItemRenderType type, ItemStack item, Object... data)
-	{
-		if (type == ItemRenderType.ENTITY)
-			RendererAvaritiaddonsChest.instance.renderTileEntityAt(tileEntityInfinityChest, -0.5F, -0.5F, -0.5F, 0);
-		else
-			RendererAvaritiaddonsChest.instance.renderTileEntityAt(tileEntityInfinityChest, 0, 0, 0, 0);
-		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-	}
+    @Override
+    public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
+        return true;
+    }
+
+    @Override
+    public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+        if (type == ItemRenderType.ENTITY)
+            RendererAvaritiaddonsChest.instance.renderTileEntityAt(tileEntityInfinityChest, -0.5F, -0.5F, -0.5F, 0);
+        else RendererAvaritiaddonsChest.instance.renderTileEntityAt(tileEntityInfinityChest, 0, 0, 0, 0);
+        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+    }
 }
