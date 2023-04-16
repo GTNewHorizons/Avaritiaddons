@@ -1,7 +1,7 @@
 // Add your dependencies here
 
 dependencies {
-    compile("com.github.GTNewHorizons:Avaritia:1.22:dev")
+    compile("com.github.GTNewHorizons:Avaritia:1.36:dev")
     compile("com.github.GTNewHorizons:WanionLib:1.8.2:dev")
 
     compileOnly("com.github.GTNewHorizons:inventory-tweaks:1.5.13:dev") {
