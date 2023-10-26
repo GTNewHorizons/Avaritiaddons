@@ -9,7 +9,6 @@ package wanion.avaritiaddons.network;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 
-import wanion.avaritiaddons.Avaritiaddons;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
@@ -18,6 +17,7 @@ import cpw.mods.fml.relauncher.Side;
 import gnu.trove.map.TIntShortMap;
 import gnu.trove.map.hash.TIntShortHashMap;
 import io.netty.buffer.ByteBuf;
+import wanion.avaritiaddons.Avaritiaddons;
 
 public class InfinityChestConfirmation implements IMessage {
 

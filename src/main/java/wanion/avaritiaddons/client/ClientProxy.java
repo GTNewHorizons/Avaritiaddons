@@ -11,6 +11,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import wanion.avaritiaddons.CommonProxy;
 import wanion.avaritiaddons.block.chest.RendererAvaritiaddonsChest;
 import wanion.avaritiaddons.block.chest.compressed.BlockCompressedChest;
@@ -20,10 +24,6 @@ import wanion.avaritiaddons.block.chest.infinity.BlockInfinityChest;
 import wanion.avaritiaddons.block.chest.infinity.ItemRendererInfinityChest;
 import wanion.avaritiaddons.block.chest.infinity.TileEntityInfinityChest;
 import wanion.lib.WanionLib;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public final class ClientProxy extends CommonProxy {

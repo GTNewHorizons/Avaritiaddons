@@ -10,8 +10,8 @@ import javax.annotation.Nonnull;
 
 import net.minecraft.entity.player.InventoryPlayer;
 
-import wanion.avaritiaddons.block.chest.ContainerAvaritiaddonsChest;
 import invtweaks.api.container.ChestContainer;
+import wanion.avaritiaddons.block.chest.ContainerAvaritiaddonsChest;
 
 @ChestContainer
 public final class ContainerCompressedChest extends ContainerAvaritiaddonsChest {

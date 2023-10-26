@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.network.IGuiHandler;
 import wanion.avaritiaddons.Avaritiaddons;
 import wanion.avaritiaddons.block.chest.compressed.ContainerCompressedChest;
 import wanion.avaritiaddons.block.chest.compressed.GuiCompressedChest;
@@ -20,7 +21,6 @@ import wanion.avaritiaddons.block.chest.infinity.TileEntityInfinityChest;
 import wanion.avaritiaddons.block.extremeautocrafter.ContainerExtremeAutoCrafter;
 import wanion.avaritiaddons.block.extremeautocrafter.GuiExtremeAutoCrafter;
 import wanion.avaritiaddons.block.extremeautocrafter.TileEntityExtremeAutoCrafter;
-import cpw.mods.fml.common.network.IGuiHandler;
 
 public final class GuiHandler implements IGuiHandler {
 

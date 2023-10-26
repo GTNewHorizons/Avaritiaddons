@@ -16,10 +16,10 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import wanion.avaritiaddons.block.chest.infinity.BlockInfinityChest;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.avaritia.entity.EntityImmortalItem;
+import wanion.avaritiaddons.block.chest.infinity.BlockInfinityChest;
 
 public class ItemBlockAvaritiaddonsChest extends ItemBlock {
 

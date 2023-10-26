@@ -13,11 +13,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import wanion.avaritiaddons.Avaritiaddons;
-import wanion.avaritiaddons.block.chest.BlockAvaritiaddonsChest;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import wanion.avaritiaddons.Avaritiaddons;
+import wanion.avaritiaddons.block.chest.BlockAvaritiaddonsChest;
 
 public final class BlockInfinityChest extends BlockAvaritiaddonsChest {
 

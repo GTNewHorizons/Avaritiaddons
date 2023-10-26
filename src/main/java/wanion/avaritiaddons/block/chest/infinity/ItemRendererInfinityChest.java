@@ -12,9 +12,9 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import wanion.avaritiaddons.block.chest.RendererAvaritiaddonsChest;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import wanion.avaritiaddons.block.chest.RendererAvaritiaddonsChest;
 
 @SideOnly(Side.CLIENT)
 public final class ItemRendererInfinityChest implements IItemRenderer {

@@ -20,6 +20,18 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import fox.spiteful.avaritia.blocks.LudicrousBlocks;
+import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
+import fox.spiteful.avaritia.crafting.Grinder;
+import fox.spiteful.avaritia.items.LudicrousItems;
+import gnu.trove.set.TIntSet;
+import gnu.trove.set.hash.TIntHashSet;
 import wanion.avaritiaddons.block.chest.ItemBlockAvaritiaddonsChest;
 import wanion.avaritiaddons.block.chest.compressed.BlockCompressedChest;
 import wanion.avaritiaddons.block.chest.compressed.TileEntityCompressedChest;
@@ -33,18 +45,6 @@ import wanion.avaritiaddons.network.InfinityChestConfirmation;
 import wanion.avaritiaddons.network.InfinityChestSlotSync;
 import wanion.avaritiaddons.network.InfinityChestSyncAllSlots;
 import wanion.lib.common.MetaItem;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import fox.spiteful.avaritia.blocks.LudicrousBlocks;
-import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
-import fox.spiteful.avaritia.crafting.Grinder;
-import fox.spiteful.avaritia.items.LudicrousItems;
-import gnu.trove.set.TIntSet;
-import gnu.trove.set.hash.TIntHashSet;
 
 public class CommonProxy {
 

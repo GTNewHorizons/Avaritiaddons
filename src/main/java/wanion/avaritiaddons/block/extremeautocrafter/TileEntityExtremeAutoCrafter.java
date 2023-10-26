@@ -21,10 +21,10 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 
-import wanion.lib.common.MetaItem;
 import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
 import gnu.trove.map.TIntIntMap;
 import gnu.trove.map.hash.TIntIntHashMap;
+import wanion.lib.common.MetaItem;
 
 public class TileEntityExtremeAutoCrafter extends TileEntity implements ISidedInventory {
 
