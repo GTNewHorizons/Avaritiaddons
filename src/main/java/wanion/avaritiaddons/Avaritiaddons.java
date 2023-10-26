@@ -6,7 +6,12 @@ package wanion.avaritiaddons;
  * http://mozilla.org/MPL/2.0/.
  */
 
-import static wanion.avaritiaddons.common.Reference.*;
+import static wanion.avaritiaddons.common.Reference.CLIENT_PROXY;
+import static wanion.avaritiaddons.common.Reference.DEPENDENCIES;
+import static wanion.avaritiaddons.common.Reference.MOD_ID;
+import static wanion.avaritiaddons.common.Reference.MOD_NAME;
+import static wanion.avaritiaddons.common.Reference.MOD_VERSION;
+import static wanion.avaritiaddons.common.Reference.SERVER_PROXY;
 
 import java.util.Map;
 
