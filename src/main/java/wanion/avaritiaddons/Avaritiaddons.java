@@ -13,7 +13,6 @@ import java.util.Map;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-import wanion.avaritiaddons.block.chest.infinity.BlockInfinityChest;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -24,6 +23,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import wanion.avaritiaddons.block.chest.infinity.BlockInfinityChest;
 
 @Mod(modid = MOD_ID, name = MOD_NAME, version = MOD_VERSION, dependencies = DEPENDENCIES)
 public final class Avaritiaddons {

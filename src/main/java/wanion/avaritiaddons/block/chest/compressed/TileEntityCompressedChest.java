@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
 
 import net.minecraft.util.ResourceLocation;
 
-import wanion.avaritiaddons.block.chest.TileEntityAvaritiaddonsChest;
-import wanion.avaritiaddons.client.ClientConstants;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import wanion.avaritiaddons.block.chest.TileEntityAvaritiaddonsChest;
+import wanion.avaritiaddons.client.ClientConstants;
 
 public final class TileEntityCompressedChest extends TileEntityAvaritiaddonsChest {
 
