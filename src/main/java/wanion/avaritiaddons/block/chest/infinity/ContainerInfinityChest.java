@@ -47,7 +47,7 @@ public final class ContainerInfinityChest extends ContainerAvaritiaddonsChest {
                     itemStack.stackSize = 0;
                     changed = true;
                 } else if (slotStack.getItem() == itemStack.getItem()
-                        && (!itemStack.getHasSubtypes() || itemStack.getItemDamage() == slotStack.getItemDamage())
+                        && itemStack.getItemDamage() == slotStack.getItemDamage()
                         && ItemStack.areItemStackTagsEqual(itemStack, slotStack)) {
                             if ((long) slotStack.stackSize + (long) itemStack.stackSize <= (long) Integer.MAX_VALUE) {
                                 slotStack.stackSize += itemStack.stackSize;
@@ -66,7 +66,7 @@ public final class ContainerInfinityChest extends ContainerAvaritiaddonsChest {
                     changed = true;
                 } else
                     if (slotStack.getItem() == itemStack.getItem() && slotStack.stackSize < slotStack.getMaxStackSize()
-                            && (!itemStack.getHasSubtypes() || itemStack.getItemDamage() == slotStack.getItemDamage())
+                            && itemStack.getItemDamage() == slotStack.getItemDamage()
                             && ItemStack.areItemStackTagsEqual(itemStack, slotStack)) {
                                 final int dif = MathHelper.clamp_int(
                                         itemStack.stackSize,
@@ -110,7 +110,7 @@ public final class ContainerInfinityChest extends ContainerAvaritiaddonsChest {
                     if (slotStack.stackSize == 0) actualSlot.putStack(null);
                     else actualSlot.onSlotChanged();
                 } else if (slotStack != null && slotStack.getItem() == playerStack.getItem()
-                        && (!playerStack.getHasSubtypes() || playerStack.getItemDamage() == slotStack.getItemDamage())
+                        && playerStack.getItemDamage() == slotStack.getItemDamage()
                         && ItemStack.areItemStackTagsEqual(playerStack, slotStack)) {
                             if ((long) slotStack.stackSize + (long) playerStack.stackSize <= (long) Integer.MAX_VALUE) {
                                 slotStack.stackSize += playerStack.stackSize;
@@ -125,7 +125,7 @@ public final class ContainerInfinityChest extends ContainerAvaritiaddonsChest {
                     actualSlot.putStack(newItemStack);
                     if (playerStack.stackSize == 0) entityPlayer.inventory.setItemStack(null);
                 } else if (slotStack.getItem() == playerStack.getItem()
-                        && (!playerStack.getHasSubtypes() || playerStack.getItemDamage() == slotStack.getItemDamage())
+                        && playerStack.getItemDamage() == slotStack.getItemDamage()
                         && ItemStack.areItemStackTagsEqual(playerStack, slotStack)) {
                             playerStack.stackSize--;
                             slotStack.stackSize++;
