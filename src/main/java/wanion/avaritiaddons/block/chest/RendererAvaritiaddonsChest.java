@@ -21,7 +21,7 @@ public class RendererAvaritiaddonsChest extends TileEntitySpecialRenderer {
 
     public static final RendererAvaritiaddonsChest instance = new RendererAvaritiaddonsChest();
 
-    private ModelChest modelChest = new ModelChest();
+    private final ModelChest modelChest = new ModelChest();
 
     private RendererAvaritiaddonsChest() {}
 

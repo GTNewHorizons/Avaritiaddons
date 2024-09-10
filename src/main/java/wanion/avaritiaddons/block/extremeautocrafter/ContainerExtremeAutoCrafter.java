@@ -52,6 +52,7 @@ public class ContainerExtremeAutoCrafter extends Container {
         return itemstack;
     }
 
+    @Override
     public boolean canDragIntoSlot(final Slot slot) {
         return slot.slotNumber < 81 || slot.slotNumber > 162;
     }

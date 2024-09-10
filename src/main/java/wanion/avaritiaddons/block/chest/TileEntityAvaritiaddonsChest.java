@@ -107,15 +107,18 @@ public abstract class TileEntityAvaritiaddonsChest extends TileEntity implements
 
     public NBTTagCompound writeCustomNBT(final NBTTagCompound nbtTagCompound) {
         final NBTTagList nbtTagList = new NBTTagList();
+        boolean hasItems = false;
         for (int i = 0; i < inventoryAvaritiaddonsChest.getSizeInventory(); i++) {
             final ItemStack itemStack = inventoryAvaritiaddonsChest.getStackInSlot(i);
             if (itemStack != null) {
                 final NBTTagCompound slotCompound = new NBTTagCompound();
                 slotCompound.setShort("Slot", (short) i);
                 nbtTagList.appendTag(itemStack.writeToNBT(slotCompound));
+                hasItems = true;
             }
         }
-        nbtTagCompound.setTag("Contents", nbtTagList);
+        if (hasItems) nbtTagCompound.setTag("Contents", nbtTagList);
+        if (nbtTagCompound.hasNoTags()) return null;
         return nbtTagCompound;
     }
 

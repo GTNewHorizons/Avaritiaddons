@@ -22,7 +22,7 @@ public final class TileEntityCompressedChest extends TileEntityAvaritiaddonsChes
     }
 
     @Override
-    public final String getInventoryName() {
+    public String getInventoryName() {
         return "container.CompressedChest";
     }
 
