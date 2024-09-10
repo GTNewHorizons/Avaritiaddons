@@ -206,12 +206,14 @@ public class TileEntityExtremeAutoCrafter extends TileEntity implements ISidedIn
 
     public NBTTagCompound writeCustomNBT(final NBTTagCompound nbtTagCompound) {
         final NBTTagList nbtTagList = new NBTTagList();
+        boolean hasItems = false;
         for (int i = 0; i < 162; i++) {
             final ItemStack itemStack = getStackInSlot(i);
             if (itemStack != null) {
                 final NBTTagCompound slotCompound = new NBTTagCompound();
                 slotCompound.setShort("Slot", (short) i);
                 nbtTagList.appendTag(itemStack.writeToNBT(slotCompound));
+                hasItems = true;
             }
         }
         final ItemStack output = getStackInSlot(162);
@@ -219,8 +221,10 @@ public class TileEntityExtremeAutoCrafter extends TileEntity implements ISidedIn
             final NBTTagCompound slotCompound = new NBTTagCompound();
             slotCompound.setShort("Slot", (short) 162);
             nbtTagList.appendTag(output.writeToNBT(slotCompound));
+            hasItems = true;
         }
-        nbtTagCompound.setTag("Contents", nbtTagList);
+        if (hasItems) nbtTagCompound.setTag("Contents", nbtTagList);
+        if (nbtTagCompound.hasNoTags()) return null;
         return nbtTagCompound;
     }
 

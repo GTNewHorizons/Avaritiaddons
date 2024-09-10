@@ -84,14 +84,14 @@ public abstract class BlockAvaritiaddonsChest extends BlockContainer {
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         TileEntity te = world.getTileEntity(x, y, z);
         Block block = world.getBlock(x, y, z);
-        ArrayList<ItemStack> arr = new ArrayList<>();
+        ArrayList<ItemStack> list = new ArrayList<>();
         if (te instanceof TileEntityAvaritiaddonsChest) {
             TileEntityAvaritiaddonsChest tileEntityAvaritiaddonsChest = (TileEntityAvaritiaddonsChest) te;
             final ItemStack droppedStack = new ItemStack(block, 1, 0);
             droppedStack.setTagCompound(tileEntityAvaritiaddonsChest.writeCustomNBT(new NBTTagCompound()));
-            arr.add(droppedStack);
+            list.add(droppedStack);
         }
-        return arr;
+        return list;
     }
 
 }

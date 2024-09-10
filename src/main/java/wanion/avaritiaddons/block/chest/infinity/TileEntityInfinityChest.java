@@ -25,7 +25,7 @@ public final class TileEntityInfinityChest extends TileEntityAvaritiaddonsChest 
     }
 
     @Override
-    public final void setInventorySlotContents(int slot, final ItemStack itemStack) {
+    public void setInventorySlotContents(int slot, final ItemStack itemStack) {
         if (itemStack == null) {
             inventoryAvaritiaddonsChest.contents[slot] = null;
             markDirty();
@@ -80,7 +80,7 @@ public final class TileEntityInfinityChest extends TileEntityAvaritiaddonsChest 
     }
 
     @Override
-    public final void readCustomNBT(final NBTTagCompound nbtTagCompound) {
+    public void readCustomNBT(final NBTTagCompound nbtTagCompound) {
         final NBTTagList nbtTagList = nbtTagCompound.getTagList("Contents", 10);
         for (int i = 0; i < nbtTagList.tagCount(); i++) {
             final NBTTagCompound slotCompound = nbtTagList.getCompoundTagAt(i);
@@ -91,17 +91,20 @@ public final class TileEntityInfinityChest extends TileEntityAvaritiaddonsChest 
     }
 
     @Override
-    public final NBTTagCompound writeCustomNBT(final NBTTagCompound nbtTagCompound) {
+    public NBTTagCompound writeCustomNBT(final NBTTagCompound nbtTagCompound) {
         final NBTTagList nbtTagList = new NBTTagList();
+        boolean hasItems = false;
         for (int i = 0; i < 243; i++) {
             final ItemStack itemStack = inventoryAvaritiaddonsChest.getStackInSlot(i);
             if (itemStack != null) {
                 final NBTTagCompound slotCompound = new NBTTagCompound();
                 slotCompound.setShort("Slot", (short) i);
                 nbtTagList.appendTag(writeItemStackToNbt(slotCompound, itemStack));
+                hasItems = true;
             }
         }
-        nbtTagCompound.setTag("Contents", nbtTagList);
+        if (hasItems) nbtTagCompound.setTag("Contents", nbtTagList);
+        if (nbtTagCompound.hasNoTags()) return null;
         return nbtTagCompound;
     }
 
@@ -131,7 +134,7 @@ public final class TileEntityInfinityChest extends TileEntityAvaritiaddonsChest 
     }
 
     @Override
-    public final int getSizeInventory() {
+    public int getSizeInventory() {
         return 244;
     }
 
@@ -143,7 +146,7 @@ public final class TileEntityInfinityChest extends TileEntityAvaritiaddonsChest 
     }
 
     @Override
-    public final String getInventoryName() {
+    public String getInventoryName() {
         return "container.InfinityChest";
     }
 }

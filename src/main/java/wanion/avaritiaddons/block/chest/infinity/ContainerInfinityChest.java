@@ -24,7 +24,6 @@ import wanion.avaritiaddons.network.InfinityChestSlotSync;
 
 public final class ContainerInfinityChest extends ContainerAvaritiaddonsChest {
 
-    @SuppressWarnings("unchecked")
     public ContainerInfinityChest(@Nonnull final TileEntityInfinityChest tileEntityCompressedChest,
             final InventoryPlayer inventoryPlayer) {
         super(tileEntityCompressedChest, inventoryPlayer);
@@ -171,7 +170,6 @@ public final class ContainerInfinityChest extends ContainerAvaritiaddonsChest {
         }
     }
 
-    @SuppressWarnings("unchecked")
     public void syncData(final ItemStack itemStack, final int slot, final int stackSize) {
         if (itemStack != null) {
             itemStack.stackSize = stackSize;
