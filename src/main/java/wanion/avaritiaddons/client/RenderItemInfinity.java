@@ -78,9 +78,9 @@ public final class RenderItemInfinity extends RenderItem {
 
     private static String humanReadableValue(final int value) {
         if (value > 0 && value < 1000) return Integer.toString(value);
-        else if (value >= 1000 && value < 1000000) return Integer.toString(value / 1000) + "K";
-        else if (value >= 1000000 && value <= 1000000000) return Integer.toString(value / 1000000) + "M";
-        else if (value >= 1000000000) return Integer.toString(value / 1000000000) + "B";
+        else if (value >= 1000 && value < 1000000) return value / 1000 + "K";
+        else if (value >= 1000000 && value <= 1000000000) return value / 1000000 + "M";
+        else if (value >= 1000000000) return value / 1000000000 + "B";
         else return null;
     }
 }
