@@ -50,7 +50,7 @@ public final class ClientProxy extends CommonProxy {
     }
 
     @Override
-    public final EntityPlayer getEntityPlayerFromContext(MessageContext ctx) {
+    public EntityPlayer getEntityPlayerFromContext(MessageContext ctx) {
         return Minecraft.getMinecraft().thePlayer;
     }
 }
