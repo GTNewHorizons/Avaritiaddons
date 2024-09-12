@@ -26,8 +26,6 @@ import wanion.avaritiaddons.Avaritiaddons;
 
 public abstract class BlockAvaritiaddonsChest extends BlockContainer {
 
-    private final static Random rand = new Random();
-
     public BlockAvaritiaddonsChest(@Nonnull final Material material) {
         super(material);
         setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
