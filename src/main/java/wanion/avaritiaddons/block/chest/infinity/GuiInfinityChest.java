@@ -137,7 +137,7 @@ public final class GuiInfinityChest extends GuiAvaritiaddonsChest {
                 itemstack.stackSize = field_146996_I;
 
                 if (itemstack.stackSize == 0) {
-                    s = "" + EnumChatFormatting.YELLOW + "0";
+                    s = EnumChatFormatting.YELLOW + "0";
                 }
             }
 
