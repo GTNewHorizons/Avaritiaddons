@@ -596,14 +596,4 @@ public final class GuiInfinityChest extends GuiAvaritiaddonsChest {
                 p_146981_3_);
     }
 
-    protected boolean func_146978_c(int p_146978_1_, int p_146978_2_, int p_146978_3_, int p_146978_4_, int p_146978_5_,
-            int p_146978_6_) {
-        int k1 = guiLeft;
-        int l1 = guiTop;
-        p_146978_5_ -= k1;
-        p_146978_6_ -= l1;
-        return p_146978_5_ >= p_146978_1_ - 1 && p_146978_5_ < p_146978_1_ + p_146978_3_ + 1
-                && p_146978_6_ >= p_146978_2_ - 1
-                && p_146978_6_ < p_146978_2_ + p_146978_4_ + 1;
-    }
 }
