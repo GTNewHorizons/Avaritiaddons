@@ -69,18 +69,18 @@ public final class RenderItemInfinity extends RenderItem {
             int p_77017_6_) {
         p_77017_1_.startDrawingQuads();
         p_77017_1_.setColorOpaque_I(p_77017_6_);
-        p_77017_1_.addVertex((double) (p_77017_2_), (double) (p_77017_3_), 0.0D);
-        p_77017_1_.addVertex((double) (p_77017_2_), (double) (p_77017_3_ + p_77017_5_), 0.0D);
-        p_77017_1_.addVertex((double) (p_77017_2_ + p_77017_4_), (double) (p_77017_3_ + p_77017_5_), 0.0D);
-        p_77017_1_.addVertex((double) (p_77017_2_ + p_77017_4_), (double) (p_77017_3_), 0.0D);
+        p_77017_1_.addVertex(p_77017_2_, p_77017_3_, 0.0D);
+        p_77017_1_.addVertex(p_77017_2_, p_77017_3_ + p_77017_5_, 0.0D);
+        p_77017_1_.addVertex(p_77017_2_ + p_77017_4_, p_77017_3_ + p_77017_5_, 0.0D);
+        p_77017_1_.addVertex(p_77017_2_ + p_77017_4_, p_77017_3_, 0.0D);
         p_77017_1_.draw();
     }
 
     private static String humanReadableValue(final int value) {
         if (value > 0 && value < 1000) return Integer.toString(value);
-        else if (value >= 1000 && value < 1000000) return Integer.toString(value / 1000) + "K";
-        else if (value >= 1000000 && value <= 1000000000) return Integer.toString(value / 1000000) + "M";
-        else if (value >= 1000000000) return Integer.toString(value / 1000000000) + "B";
+        else if (value >= 1000 && value < 1000000) return value / 1000 + "K";
+        else if (value >= 1000000 && value <= 1000000000) return value / 1000000 + "M";
+        else if (value >= 1000000000) return value / 1000000000 + "B";
         else return null;
     }
 }

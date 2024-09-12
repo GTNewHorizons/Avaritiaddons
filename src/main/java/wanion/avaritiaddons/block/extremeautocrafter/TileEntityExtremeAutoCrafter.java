@@ -144,8 +144,8 @@ public class TileEntityExtremeAutoCrafter extends TileEntity implements ISidedIn
     public void setInventorySlotContents(final int slot, final ItemStack itemStack) {
         if (slot > 80 && slot < 162) {
             recipeChanged = true;
-            itemStacks[slot] = itemStack;
-        } else itemStacks[slot] = itemStack;
+        }
+        itemStacks[slot] = itemStack;
         markDirty();
     }
 

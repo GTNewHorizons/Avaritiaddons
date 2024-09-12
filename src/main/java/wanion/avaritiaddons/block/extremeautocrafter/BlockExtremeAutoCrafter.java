@@ -29,8 +29,6 @@ import wanion.avaritiaddons.Avaritiaddons;
 
 public class BlockExtremeAutoCrafter extends BlockContainer {
 
-    private final static Random rand = new Random();
-
     public static final BlockExtremeAutoCrafter instance = new BlockExtremeAutoCrafter();
     private static IIcon top;
     private static IIcon sides;
@@ -83,9 +81,9 @@ public class BlockExtremeAutoCrafter extends BlockContainer {
             world.spawnEntityInWorld(
                     new EntityItem(
                             world,
-                            x + rand.nextFloat() * 0.8F + 0.1F,
-                            y + rand.nextFloat() * 0.8F + 0.1F,
-                            z + rand.nextFloat() * 0.8F + 0.1F,
+                            x + world.rand.nextFloat() * 0.8F + 0.1F,
+                            y + world.rand.nextFloat() * 0.8F + 0.1F,
+                            z + world.rand.nextFloat() * 0.8F + 0.1F,
                             droppedStack));
         }
         super.breakBlock(world, x, y, z, block, metadata);

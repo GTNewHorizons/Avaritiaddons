@@ -145,12 +145,12 @@ public abstract class TileEntityAvaritiaddonsChest extends TileEntity implements
             List list = worldObj.getEntitiesWithinAABB(
                     EntityPlayer.class,
                     AxisAlignedBB.getBoundingBox(
-                            (double) ((float) xCoord - f),
-                            (double) ((float) yCoord - f),
-                            (double) ((float) zCoord - f),
-                            (double) ((float) (xCoord + 1) + f),
-                            (double) ((float) (yCoord + 1) + f),
-                            (double) ((float) (zCoord + 1) + f)));
+                            (float) xCoord - f,
+                            (float) yCoord - f,
+                            (float) zCoord - f,
+                            (float) (xCoord + 1) + f,
+                            (float) (yCoord + 1) + f,
+                            (float) (zCoord + 1) + f));
 
             for (Object aList : list) {
                 EntityPlayer entityplayer = (EntityPlayer) aList;

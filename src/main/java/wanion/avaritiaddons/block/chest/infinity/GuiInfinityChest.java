@@ -93,8 +93,7 @@ public final class GuiInfinityChest extends GuiAvaritiaddonsChest {
         Slot theSlot = null;
         short short1 = 240;
         short short2 = 240;
-        OpenGlHelper
-                .setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) short1 / 1.0F, (float) short2 / 1.0F);
+        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, short1, short2);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         int k1;
 
@@ -137,7 +136,7 @@ public final class GuiInfinityChest extends GuiAvaritiaddonsChest {
                 itemstack.stackSize = field_146996_I;
 
                 if (itemstack.stackSize == 0) {
-                    s = "" + EnumChatFormatting.YELLOW + "0";
+                    s = EnumChatFormatting.YELLOW + "0";
                 }
             }
 
@@ -596,14 +595,4 @@ public final class GuiInfinityChest extends GuiAvaritiaddonsChest {
                 p_146981_3_);
     }
 
-    protected boolean func_146978_c(int p_146978_1_, int p_146978_2_, int p_146978_3_, int p_146978_4_, int p_146978_5_,
-            int p_146978_6_) {
-        int k1 = guiLeft;
-        int l1 = guiTop;
-        p_146978_5_ -= k1;
-        p_146978_6_ -= l1;
-        return p_146978_5_ >= p_146978_1_ - 1 && p_146978_5_ < p_146978_1_ + p_146978_3_ + 1
-                && p_146978_6_ >= p_146978_2_ - 1
-                && p_146978_6_ < p_146978_2_ + p_146978_4_ + 1;
-    }
 }

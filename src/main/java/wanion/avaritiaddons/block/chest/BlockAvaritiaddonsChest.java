@@ -7,7 +7,6 @@ package wanion.avaritiaddons.block.chest;
  */
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import javax.annotation.Nonnull;
 
@@ -25,8 +24,6 @@ import net.minecraft.world.World;
 import wanion.avaritiaddons.Avaritiaddons;
 
 public abstract class BlockAvaritiaddonsChest extends BlockContainer {
-
-    private final static Random rand = new Random();
 
     public BlockAvaritiaddonsChest(@Nonnull final Material material) {
         super(material);

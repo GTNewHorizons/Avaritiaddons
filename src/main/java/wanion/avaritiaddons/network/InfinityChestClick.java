@@ -65,7 +65,6 @@ public class InfinityChestClick implements IMessage {
 
     public static class Handler implements IMessageHandler<InfinityChestClick, IMessage> {
 
-        @SuppressWarnings("unchecked")
         @Override
         public IMessage onMessage(final InfinityChestClick message, final MessageContext ctx) {
             final EntityPlayerMP entityPlayer = ctx.getServerHandler().playerEntity;
