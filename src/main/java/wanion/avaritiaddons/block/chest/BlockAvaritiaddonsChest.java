@@ -7,7 +7,6 @@ package wanion.avaritiaddons.block.chest;
  */
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import javax.annotation.Nonnull;
 

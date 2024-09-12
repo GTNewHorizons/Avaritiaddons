@@ -93,8 +93,7 @@ public final class GuiInfinityChest extends GuiAvaritiaddonsChest {
         Slot theSlot = null;
         short short1 = 240;
         short short2 = 240;
-        OpenGlHelper
-                .setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, short1, short2);
+        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, short1, short2);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         int k1;
 
