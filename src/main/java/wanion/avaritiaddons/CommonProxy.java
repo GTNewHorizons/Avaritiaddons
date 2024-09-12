@@ -184,7 +184,7 @@ public class CommonProxy {
                         .getRaw(separatorChar == -1 ? toRemove : toRemove.substring(0, separatorChar));
                 if (item != null) {
                     final int metadata = separatorChar == -1 ? 0
-                            : Integer.parseInt(toRemove.substring(separatorChar + 1, toRemove.length()));
+                            : Integer.parseInt(toRemove.substring(separatorChar + 1));
                     final int hash = MetaItem.get(new ItemStack(item, 1, metadata));
                     if (hash > 0) stacksToRemove.add(hash);
                 }
