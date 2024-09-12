@@ -69,10 +69,10 @@ public final class RenderItemInfinity extends RenderItem {
             int p_77017_6_) {
         p_77017_1_.startDrawingQuads();
         p_77017_1_.setColorOpaque_I(p_77017_6_);
-        p_77017_1_.addVertex((double) (p_77017_2_), (double) (p_77017_3_), 0.0D);
-        p_77017_1_.addVertex((double) (p_77017_2_), (double) (p_77017_3_ + p_77017_5_), 0.0D);
-        p_77017_1_.addVertex((double) (p_77017_2_ + p_77017_4_), (double) (p_77017_3_ + p_77017_5_), 0.0D);
-        p_77017_1_.addVertex((double) (p_77017_2_ + p_77017_4_), (double) (p_77017_3_), 0.0D);
+        p_77017_1_.addVertex(p_77017_2_, p_77017_3_, 0.0D);
+        p_77017_1_.addVertex(p_77017_2_, p_77017_3_ + p_77017_5_, 0.0D);
+        p_77017_1_.addVertex(p_77017_2_ + p_77017_4_, p_77017_3_ + p_77017_5_, 0.0D);
+        p_77017_1_.addVertex(p_77017_2_ + p_77017_4_, p_77017_3_, 0.0D);
         p_77017_1_.draw();
     }
 
