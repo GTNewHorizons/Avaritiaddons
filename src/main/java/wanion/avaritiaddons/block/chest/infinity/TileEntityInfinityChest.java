@@ -85,9 +85,22 @@ public final class TileEntityInfinityChest extends TileEntityAvaritiaddonsChest 
         for (int i = 0; i < nbtTagList.tagCount(); i++) {
             final NBTTagCompound slotCompound = nbtTagList.getCompoundTagAt(i);
             final int slot = slotCompound.getShort("Slot");
-            if (slot >= 0 && slot < 243)
+            if (slot >= 0 && slot < 243) {
                 inventoryAvaritiaddonsChest.setInventorySlotContents(slot, readItemStackFromNbt(slotCompound));
+            }
         }
+    }
+
+    private static ItemStack readItemStackFromNbt(final NBTTagCompound nbtTagCompound) {
+        final ItemStack itemStack = ItemStack.loadItemStackFromNBT(nbtTagCompound);
+        if (itemStack == null) {
+            // might be null if an item that was stored in a chest
+            // gets removed from the game when updating / removing a mod
+            return null;
+        }
+        itemStack.stackSize = nbtTagCompound.getInteger("intCount");
+        if (nbtTagCompound.hasKey("tag")) itemStack.setTagCompound(nbtTagCompound.getCompoundTag("tag"));
+        return itemStack;
     }
 
     @Override
@@ -108,19 +121,12 @@ public final class TileEntityInfinityChest extends TileEntityAvaritiaddonsChest 
         return nbtTagCompound;
     }
 
-    public static NBTTagCompound writeItemStackToNbt(@Nonnull final NBTTagCompound nbtTagCompound,
+    private static NBTTagCompound writeItemStackToNbt(@Nonnull final NBTTagCompound nbtTagCompound,
             @Nonnull final ItemStack itemStack) {
         itemStack.writeToNBT(nbtTagCompound);
         nbtTagCompound.setInteger("intCount", itemStack.stackSize);
         if (itemStack.stackTagCompound != null) nbtTagCompound.setTag("tag", itemStack.stackTagCompound);
         return nbtTagCompound;
-    }
-
-    public static ItemStack readItemStackFromNbt(final NBTTagCompound nbtTagCompound) {
-        final ItemStack itemStack = ItemStack.loadItemStackFromNBT(nbtTagCompound);
-        itemStack.stackSize = nbtTagCompound.getInteger("intCount");
-        if (nbtTagCompound.hasKey("tag")) itemStack.setTagCompound(nbtTagCompound.getCompoundTag("tag"));
-        return itemStack;
     }
 
     @Override
