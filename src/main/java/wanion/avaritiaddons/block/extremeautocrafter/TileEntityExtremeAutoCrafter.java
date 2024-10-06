@@ -94,7 +94,7 @@ public class TileEntityExtremeAutoCrafter extends TileEntity implements ISidedIn
     private int matches(@Nonnull final TIntIntMap inputMap, @Nonnull final TIntIntMap patternMap) {
         if (inputMap.size() < patternMap.size() || !inputMap.keySet().containsAll(patternMap.keySet())) return 0;
 
-        int amount = 0x7FFFFFFF;
+        int amount = Integer.MAX_VALUE;
         for (final int key : patternMap.keys()) {
             amount = Math.min(amount, inputMap.get(key) / patternMap.get(key));
             if (amount <= 0) return 0;
