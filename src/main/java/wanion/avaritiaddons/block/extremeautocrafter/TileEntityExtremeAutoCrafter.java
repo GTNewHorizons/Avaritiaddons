@@ -81,22 +81,30 @@ public class TileEntityExtremeAutoCrafter extends TileEntity implements ISidedIn
         if (patternMap == null) return;
         final ItemStack outputStack = itemStacks[162];
         if (outputStack == null || outputStack.stackSize + outputStackSize > outputStack.getMaxStackSize()
-                || !matches(MetaItem.getSmartKeySizeMap(0, 81, itemStacks), patternMap))
+                || outputStackSize == 0)
             return;
-        cleanInput();
-        outputStack.stackSize += outputStackSize;
+        int maxAmount = matches(MetaItem.getSmartKeySizeMap(0, 81, itemStacks), patternMap);
+        maxAmount = Math.min(maxAmount, (outputStack.getMaxStackSize() - outputStack.stackSize) / outputStackSize);
+        if (maxAmount == 0) return;
+        cleanInput(maxAmount);
+        outputStack.stackSize += maxAmount * outputStackSize;
         markDirty();
     }
 
-    private boolean matches(@Nonnull final TIntIntMap inputMap, @Nonnull final TIntIntMap patternMap) {
-        if (inputMap.size() >= patternMap.size() && inputMap.keySet().containsAll(patternMap.keySet())) {
-            for (final int key : patternMap.keys()) if (inputMap.get(key) < patternMap.get(key)) return false;
-            return true;
-        } else return false;
+    private int matches(@Nonnull final TIntIntMap inputMap, @Nonnull final TIntIntMap patternMap) {
+        if (inputMap.size() < patternMap.size() || !inputMap.keySet().containsAll(patternMap.keySet())) return 0;
+
+        int amount = Integer.MAX_VALUE;
+        for (final int key : patternMap.keys()) {
+            amount = Math.min(amount, inputMap.get(key) / patternMap.get(key));
+            if (amount <= 0) return 0;
+        }
+        return amount;
     }
 
-    private void cleanInput() {
+    private void cleanInput(int maxAmount) {
         final TIntIntMap patternMap = new TIntIntHashMap(this.patternMap);
+        patternMap.transformValues((v) -> v * maxAmount);
         for (int i = 0; i < 81 && !patternMap.isEmpty(); i++) {
             final ItemStack itemStack = itemStacks[i];
             final int key = MetaItem.get(itemStack);
