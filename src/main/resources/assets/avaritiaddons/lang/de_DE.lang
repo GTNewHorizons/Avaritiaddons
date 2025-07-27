@@ -1,0 +1,11 @@
+itemGroup.avaritiaddons=Avaritiaddons
+
+tile.CompressedChest.name=Komprimierte Kiste
+tile.InfinityChest.name=Kiste der Unendlichkeit
+tile.ExtremeAutoCrafter.name=Schreckliche Automatische Werkbank
+
+container.CompressedChest=Komprimierte Kiste
+container.InfinityChest=Kiste der Unendlichkeit
+container.ExtremeAutoCrafter=Schreckliche Automatische Werkbank
+
+tooltip.fillingRange=%1$s von %2$s
