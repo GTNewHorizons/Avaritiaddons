@@ -62,11 +62,10 @@ public final class TileEntityInfinityChest extends TileEntityAvaritiaddonsChest 
     }
 
     private boolean isSameItem(ItemStack slotStack, ItemStack itemStack) {
-        if (slotStack == null || itemStack == null) return false;
-        boolean itemEqual = slotStack.getItem() == itemStack.getItem();
-        boolean metaEqual = itemStack.getItemDamage() == slotStack.getItemDamage();
-        boolean tagEqual = ItemStack.areItemStackTagsEqual(itemStack, slotStack);
-        return itemEqual && metaEqual && tagEqual;
+        return slotStack != null && itemStack != null
+                && slotStack.getItem() == itemStack.getItem()
+                && itemStack.getItemDamage() == slotStack.getItemDamage()
+                && ItemStack.areItemStackTagsEqual(itemStack, slotStack);
     }
 
     private int findSlotFor(@Nonnull final ItemStack itemStack) {
