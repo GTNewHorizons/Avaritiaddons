@@ -50,9 +50,7 @@ public class TileEntityExtremeAutoCrafter extends TileEntity implements ISidedIn
             recipeChanged = false;
             final ItemStack output = ExtremeCraftingManager.getInstance().findMatchingRecipe(craftingMatrix, worldObj);
             final ItemStack slotStack = getStackInSlot(162);
-            if (output != null && slotStack != null
-                    && slotStack.getItem() == output.getItem()
-                    && (!output.getHasSubtypes() || output.getItemDamage() == slotStack.getItemDamage())) {
+            if (output != null && slotStack != null && ItemStack.areItemStacksEqual(output, slotStack)) {
                 patternMap = MetaItem.getKeySizeMap(81, 162, itemStacks);
             } else if (slotStack != null && slotStack.stackSize > 0) {
                 patternMap = null;
