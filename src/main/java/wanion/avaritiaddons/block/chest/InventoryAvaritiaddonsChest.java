@@ -39,8 +39,8 @@ public final class InventoryAvaritiaddonsChest implements IInventory {
     public ItemStack decrStackSize(final int slot, final int howMany) {
         final ItemStack slotStack = contents[slot];
         if (slotStack != null) {
-            final int quantity = MathHelper
-                    .clamp_int(MathHelper.clamp_int(howMany, 1, slotStack.getMaxStackSize()), 1, slotStack.stackSize);
+            final int quantity = Math.min(howMany, slotStack.stackSize);
+            if (quantity == 0) return null;
             final ItemStack newStack = slotStack.copy();
             newStack.stackSize = quantity;
             if ((slotStack.stackSize -= quantity) == 0) contents[slot] = null;
