@@ -38,18 +38,22 @@ public final class InventoryAvaritiaddonsChest implements IInventory {
     public ItemStack decrStackSize(final int slot, final int howMany) {
         final ItemStack slotStack = contents[slot];
         if (slotStack == null) return null;
-        final int quantity = Math.min(howMany, slotStack.stackSize);
-        if (quantity <= 0) return null;
-        if (slotStack.stackSize == quantity) {
+
+        final int toExtract = Math.min(howMany, slotStack.stackSize);
+        if (toExtract <= 0) return null;
+
+        if (slotStack.stackSize == toExtract) {
             // Avoid copying of the stack
             contents[slot] = null;
             return slotStack;
         }
-        final ItemStack newStack = slotStack.copy();
-        newStack.stackSize = quantity;
-        slotStack.stackSize -= quantity;
+
+        final ItemStack extracted = slotStack.copy();
+        extracted.stackSize = toExtract;
+        slotStack.stackSize -= toExtract;
+
         markDirty();
-        return newStack;
+        return extracted;
     }
 
     @Override
