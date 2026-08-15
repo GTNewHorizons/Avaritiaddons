@@ -16,6 +16,9 @@ public final class Reference {
     public static final String DEPENDENCIES = "required-after:Avaritia;required-after:wanionlib@[1.7.10-1.2,)";
     public static final String CLIENT_PROXY = "wanion.avaritiaddons.client.ClientProxy";
     public static final String SERVER_PROXY = "wanion.avaritiaddons.CommonProxy";
+
+    public static final String AE2_MOD_ID = "appliedenergistics2";
+
     public static final char SLASH = File.separatorChar;
 
     private Reference() {}

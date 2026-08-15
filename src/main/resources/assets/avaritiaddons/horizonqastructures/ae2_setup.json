@@ -1,0 +1,20 @@
+{
+  "format_version": 2,
+  "size": [3, 1, 1],
+  "palette": {
+    "A": {"name": "appliedenergistics2:tile.BlockCableBus", "meta": 0, "label": "AE2 Cable and/or Bus"},
+    "B": {"name": "appliedenergistics2:tile.BlockCreativeEnergyController", "meta": 1, "label": "ME Self-Powered Controller"},
+    "C": {"name": "avaritiaddons:InfinityChest", "meta": 0, "label": "Infinity Chest"}
+  },
+  "layers": [
+    [
+      "CAB"
+    ]
+  ],
+  "annotations": {
+    "labels": {
+      "controller": [2, 0, 0],
+      "inf_chest": [0, 0, 0]
+    }
+  }
+}
