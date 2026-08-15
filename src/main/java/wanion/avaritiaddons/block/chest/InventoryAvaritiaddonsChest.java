@@ -11,7 +11,6 @@ import javax.annotation.Nonnull;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
 
 public final class InventoryAvaritiaddonsChest implements IInventory {
 
@@ -38,15 +37,14 @@ public final class InventoryAvaritiaddonsChest implements IInventory {
     @Override
     public ItemStack decrStackSize(final int slot, final int howMany) {
         final ItemStack slotStack = contents[slot];
-        if (slotStack != null) {
-            final int quantity = Math.min(howMany, slotStack.stackSize);
-            if (quantity == 0) return null;
-            final ItemStack newStack = slotStack.copy();
-            newStack.stackSize = quantity;
-            if ((slotStack.stackSize -= quantity) == 0) contents[slot] = null;
-            markDirty();
-            return newStack;
-        } else return null;
+        if (slotStack == null) return null;
+        final int quantity = Math.min(howMany, slotStack.stackSize);
+        if (quantity <= 0) return null;
+        final ItemStack newStack = slotStack.copy();
+        newStack.stackSize = quantity;
+        if ((slotStack.stackSize -= quantity) == 0) contents[slot] = null;
+        markDirty();
+        return newStack;
     }
 
     @Override
