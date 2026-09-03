@@ -8,7 +8,7 @@ package wanion.avaritiaddons.block.extremeautocrafter;
 
 import javax.annotation.Nonnull;
 
-import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
@@ -22,7 +22,6 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 
-import appeng.block.crafting.BlockSingularityCraftingStorage;
 import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
 import gnu.trove.map.TIntIntMap;
 import gnu.trove.map.hash.TIntIntHashMap;
@@ -111,10 +110,21 @@ public class TileEntityExtremeAutoCrafter extends TileEntity implements ISidedIn
             if (patternMap.containsKey(key)) {
                 final int total = patternMap.get(key);
                 final int dif = MathHelper.clamp_int(total, 1, itemStack.stackSize);
-                Block block = Block.getBlockFromItem(itemStack.getItem());
-                boolean isSingularityStorage = block instanceof BlockSingularityCraftingStorage;
-                if (!itemStack.getItem().hasContainerItem(itemStack) || isSingularityStorage) {
-                    itemStack.stackSize -= dif;
+                itemStack.stackSize -= dif;
+                if (itemStack.stackSize == 0) itemStacks[i] = null;
+
+                if (itemStack.getItem().hasContainerItem(itemStack)) {
+                    ItemStack container = itemStack.getItem().getContainerItem(itemStack);
+                    if (container != null) {
+                        if (itemStacks[162] == null) {
+                            itemStacks[162] = container.copy();
+                        } else if (ItemStack.areItemStacksEqual(itemStacks[162], container)) {
+                            itemStacks[162].stackSize += container.stackSize;
+                        } else {
+                            worldObj.spawnEntityInWorld(
+                                    new EntityItem(worldObj, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, container));
+                        }
+                    }
                 }
                 if (dif - total == 0) patternMap.remove(key);
                 else patternMap.put(key, total - dif);
