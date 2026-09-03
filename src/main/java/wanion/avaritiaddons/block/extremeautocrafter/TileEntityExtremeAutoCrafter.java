@@ -110,27 +110,53 @@ public class TileEntityExtremeAutoCrafter extends TileEntity implements ISidedIn
             if (patternMap.containsKey(key)) {
                 final int total = patternMap.get(key);
                 final int dif = MathHelper.clamp_int(total, 1, itemStack.stackSize);
-                itemStack.stackSize -= dif;
-                if (itemStack.stackSize == 0) itemStacks[i] = null;
+                ItemStack original = itemStack.copy();
 
-                if (itemStack.getItem().hasContainerItem(itemStack)) {
-                    ItemStack container = itemStack.getItem().getContainerItem(itemStack);
+                itemStack.stackSize -= dif;
+                if (itemStack.stackSize == 0) {
+                    itemStacks[i] = null;
+                }
+
+                if (dif - total == 0) patternMap.remove(key);
+                else patternMap.put(key, total - dif);
+
+                if (original.getItem().hasContainerItem(original)) {
+                    ItemStack container = original.getItem().getContainerItem(original);
                     if (container != null) {
-                        if (itemStacks[162] == null) {
-                            itemStacks[162] = container.copy();
-                        } else if (ItemStack.areItemStacksEqual(itemStacks[162], container)) {
-                            itemStacks[162].stackSize += container.stackSize;
-                        } else {
+                        container = container.copy();
+                        container.stackSize = dif;
+
+                        if (!tryAddStackToInputSlots(container)) {
                             worldObj.spawnEntityInWorld(
                                     new EntityItem(worldObj, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, container));
                         }
                     }
                 }
-                if (dif - total == 0) patternMap.remove(key);
-                else patternMap.put(key, total - dif);
-                if (itemStack.stackSize == 0) itemStacks[i] = null;
             }
         }
+    }
+
+    private boolean tryAddStackToInputSlots(ItemStack stack) {
+        for (int i = 0; i < 81; i++) {
+            ItemStack slotStack = itemStacks[i];
+            if (slotStack != null && slotStack.isItemEqual(stack)
+                    && ItemStack.areItemStackTagsEqual(slotStack, stack)) {
+                int space = slotStack.getMaxStackSize() - slotStack.stackSize;
+                if (space > 0) {
+                    int add = Math.min(space, stack.stackSize);
+                    slotStack.stackSize += add;
+                    stack.stackSize -= add;
+                    if (stack.stackSize == 0) return true;
+                }
+            }
+        }
+        for (int i = 0; i < 81; i++) {
+            if (itemStacks[i] == null) {
+                itemStacks[i] = stack.copy();
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
