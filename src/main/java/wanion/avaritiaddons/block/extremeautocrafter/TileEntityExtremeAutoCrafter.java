@@ -8,6 +8,7 @@ package wanion.avaritiaddons.block.extremeautocrafter;
 
 import javax.annotation.Nonnull;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
@@ -21,6 +22,7 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 
+import appeng.block.crafting.BlockSingularityCraftingStorage;
 import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
 import gnu.trove.map.TIntIntMap;
 import gnu.trove.map.hash.TIntIntHashMap;
@@ -109,7 +111,11 @@ public class TileEntityExtremeAutoCrafter extends TileEntity implements ISidedIn
             if (patternMap.containsKey(key)) {
                 final int total = patternMap.get(key);
                 final int dif = MathHelper.clamp_int(total, 1, itemStack.stackSize);
-                if (!itemStack.getItem().hasContainerItem(itemStack)) itemStack.stackSize -= dif;
+                Block block = Block.getBlockFromItem(itemStack.getItem());
+                boolean isSingularityStorage = block instanceof BlockSingularityCraftingStorage;
+                if (!itemStack.getItem().hasContainerItem(itemStack) || isSingularityStorage) {
+                    itemStack.stackSize -= dif;
+                }
                 if (dif - total == 0) patternMap.remove(key);
                 else patternMap.put(key, total - dif);
                 if (itemStack.stackSize == 0) itemStacks[i] = null;
