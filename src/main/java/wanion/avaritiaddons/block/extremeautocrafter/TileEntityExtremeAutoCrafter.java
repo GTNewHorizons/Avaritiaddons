@@ -8,6 +8,7 @@ package wanion.avaritiaddons.block.extremeautocrafter;
 
 import javax.annotation.Nonnull;
 
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
@@ -109,12 +110,53 @@ public class TileEntityExtremeAutoCrafter extends TileEntity implements ISidedIn
             if (patternMap.containsKey(key)) {
                 final int total = patternMap.get(key);
                 final int dif = MathHelper.clamp_int(total, 1, itemStack.stackSize);
-                if (!itemStack.getItem().hasContainerItem(itemStack)) itemStack.stackSize -= dif;
+                ItemStack original = itemStack.copy();
+
+                itemStack.stackSize -= dif;
+                if (itemStack.stackSize == 0) {
+                    itemStacks[i] = null;
+                }
+
                 if (dif - total == 0) patternMap.remove(key);
                 else patternMap.put(key, total - dif);
-                if (itemStack.stackSize == 0) itemStacks[i] = null;
+
+                if (original.getItem().hasContainerItem(original)) {
+                    ItemStack container = original.getItem().getContainerItem(original);
+                    if (container != null) {
+                        container = container.copy();
+                        container.stackSize = dif;
+
+                        if (!tryAddStackToInputSlots(container)) {
+                            worldObj.spawnEntityInWorld(
+                                    new EntityItem(worldObj, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, container));
+                        }
+                    }
+                }
             }
         }
+    }
+
+    private boolean tryAddStackToInputSlots(ItemStack stack) {
+        for (int i = 0; i < 81; i++) {
+            ItemStack slotStack = itemStacks[i];
+            if (slotStack != null && slotStack.isItemEqual(stack)
+                    && ItemStack.areItemStackTagsEqual(slotStack, stack)) {
+                int space = slotStack.getMaxStackSize() - slotStack.stackSize;
+                if (space > 0) {
+                    int add = Math.min(space, stack.stackSize);
+                    slotStack.stackSize += add;
+                    stack.stackSize -= add;
+                    if (stack.stackSize == 0) return true;
+                }
+            }
+        }
+        for (int i = 0; i < 81; i++) {
+            if (itemStacks[i] == null) {
+                itemStacks[i] = stack.copy();
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
