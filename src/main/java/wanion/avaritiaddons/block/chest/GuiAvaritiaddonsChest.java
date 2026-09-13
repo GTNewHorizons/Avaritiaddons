@@ -26,7 +26,7 @@ public abstract class GuiAvaritiaddonsChest extends GuiContainer {
 
     public GuiAvaritiaddonsChest(@Nonnull final Container container) {
         super(container);
-        xSize = 500;
+        xSize = 428;
         ySize = 276;
     }
 
