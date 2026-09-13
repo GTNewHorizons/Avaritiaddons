@@ -46,7 +46,7 @@ public abstract class GuiAvaritiaddonsChest extends GuiContainer {
     @Override
     protected void drawGuiContainerForegroundLayer(final int p_146979_1_, final int p_146979_2_) {
         fontRendererObj.drawString(I18n.format(getTileEntity().getInventoryName()), 7, 7, 0x404040);
-        fontRendererObj.drawString(I18n.format("container.inventory"), 169, 183, 0x404040);
+        fontRendererObj.drawString(I18n.format("container.inventory"), 133, 183, 0x404040);
     }
 
     @Nonnull
