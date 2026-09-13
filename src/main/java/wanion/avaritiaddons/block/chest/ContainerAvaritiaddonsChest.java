@@ -20,11 +20,42 @@ public abstract class ContainerAvaritiaddonsChest extends Container {
 
     public ContainerAvaritiaddonsChest(@Nonnull final TileEntityAvaritiaddonsChest tileEntityAvaritiaddonsChest,
             final InventoryPlayer inventoryPlayer) {
-        for (int y = 0; y < 9; y++) for (int x = 0; x < 27; x++)
-            addSlotToContainer(new Slot(tileEntityAvaritiaddonsChest, y * 27 + x, 8 + (18 * x), 18 + (18 * y)));
-        for (int y = 0; y < 3; y++) for (int x = 0; x < 9; x++)
-            addSlotToContainer(new Slot(inventoryPlayer, 9 + y * 9 + x, 170 + (18 * x), 194 + (18 * y)));
-        for (int i = 0; i < 9; i++) addSlotToContainer(new Slot(inventoryPlayer, i, 170 + (18 * i), 252));
+
+        // Main chest inventory: 23 x 9 = 207 slots
+        for (int y = 0; y < 9; y++) {
+            for (int x = 0; x < 23; x++) {
+                addSlotToContainer(new Slot(tileEntityAvaritiaddonsChest, y * 23 + x, 8 + (18 * x), 18 + (18 * y)));
+            }
+        }
+
+        // Bottom-left chest inventory: 6 x 3 = 18 slots
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 6; x++) {
+                addSlotToContainer(
+                        new Slot(tileEntityAvaritiaddonsChest, 207 + y * 6 + x, 8 + (18 * x), 180 + (18 * y)));
+            }
+        }
+
+        // Bottom-right chest inventory: 6 x 3 = 18 slots
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 6; x++) {
+                addSlotToContainer(
+                        new Slot(tileEntityAvaritiaddonsChest, 225 + y * 6 + x, 314 + (18 * x), 180 + (18 * y)));
+            }
+        }
+
+        // Player inventory: 9 x 3
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 9; x++) {
+                addSlotToContainer(new Slot(inventoryPlayer, 9 + y * 9 + x, 134 + (18 * x), 194 + (18 * y)));
+            }
+        }
+
+        // Player hotbar: 9 slots
+        for (int i = 0; i < 9; i++) {
+            addSlotToContainer(new Slot(inventoryPlayer, i, 134 + (18 * i), 252));
+        }
+
         (this.tileEntityAvaritiaddonsChest = tileEntityAvaritiaddonsChest).openInventory();
     }
 
