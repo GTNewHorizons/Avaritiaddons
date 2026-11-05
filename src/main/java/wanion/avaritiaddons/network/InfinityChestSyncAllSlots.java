@@ -58,6 +58,7 @@ public class InfinityChestSyncAllSlots implements IMessage {
 
         @Override
         public IMessage onMessage(final InfinityChestSyncAllSlots message, final MessageContext ctx) {
+            if (ctx.side.isServer()) return null;
             final EntityPlayer entityPlayer = Avaritiaddons.proxy.getEntityPlayerFromContext(ctx);
             if (entityPlayer.openContainer instanceof ContainerInfinityChest)
                 for (int i = 0; i < message.slotCount; i++)
