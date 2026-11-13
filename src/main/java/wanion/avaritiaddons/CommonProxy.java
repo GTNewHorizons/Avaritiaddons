@@ -64,8 +64,6 @@ public class CommonProxy {
         GameRegistry.registerTileEntity(TileEntityExtremeAutoCrafter.class, "Avaritiaddons:ExtremeAutoCrafter");
         NetworkRegistry.INSTANCE.registerGuiHandler(Avaritiaddons.instance, GuiHandler.instance);
         networkWrapper
-                .registerMessage(InfinityChestSlotSync.Handler.class, InfinityChestSlotSync.class, 0, Side.SERVER);
-        networkWrapper
                 .registerMessage(InfinityChestSlotSync.Handler.class, InfinityChestSlotSync.class, 1, Side.CLIENT);
         networkWrapper.registerMessage(InfinityChestClick.Handler.class, InfinityChestClick.class, 2, Side.SERVER);
         networkWrapper.registerMessage(InfinityChestClick.Handler.class, InfinityChestClick.class, 3, Side.CLIENT);
@@ -79,11 +77,6 @@ public class CommonProxy {
                 InfinityChestConfirmation.class,
                 5,
                 Side.CLIENT);
-        networkWrapper.registerMessage(
-                InfinityChestSyncAllSlots.Handler.class,
-                InfinityChestSyncAllSlots.class,
-                6,
-                Side.SERVER);
         networkWrapper.registerMessage(
                 InfinityChestSyncAllSlots.Handler.class,
                 InfinityChestSyncAllSlots.class,
