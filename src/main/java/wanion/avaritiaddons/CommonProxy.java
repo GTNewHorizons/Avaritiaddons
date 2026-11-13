@@ -63,7 +63,6 @@ public class CommonProxy {
         GameRegistry.registerTileEntity(TileEntityInfinityChest.class, "Avaritiaddons:InfinityChest");
         GameRegistry.registerTileEntity(TileEntityExtremeAutoCrafter.class, "Avaritiaddons:ExtremeAutoCrafter");
         NetworkRegistry.INSTANCE.registerGuiHandler(Avaritiaddons.instance, GuiHandler.instance);
-        // Discriminators 0 and 6 are reserved; chest state sync is clientbound only.
         networkWrapper
                 .registerMessage(InfinityChestSlotSync.Handler.class, InfinityChestSlotSync.class, 1, Side.CLIENT);
         networkWrapper.registerMessage(InfinityChestClick.Handler.class, InfinityChestClick.class, 2, Side.SERVER);
